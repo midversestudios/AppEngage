@@ -2,20 +2,18 @@
 Clone this repo or [download here](https://github.com/midversestudios/AppEngage/archive/master.zip)
 
 
-##Starting up the Android nGage SDK
+##Starting up the Unity AppEngage SDK
 
 1. Get the the latest SDK and extract the zip. Here you will find:
 
-	nGage- android resource project and includes the ngageSDK.jar  library
-	SampleApp - Sample SDK project 
+	AppEngageUnityPlugin - Unity android resource project and includes the ngageSDK.jar library
+	
+	AppEngageUnitySampleApp - Sample Unity SDK project 
 
 
-2. Add nGage resource to the project: -  Since Android does not allow packing resources directly into a library file you must add the nGage Android project. In eclipse, Import 'nGage' project from the SDK zip file. Go to your apps Project Properties and select Android menu item on left. On the right you will see a 'Library' section. Select the 'Add' button and find the android project 'nGage'. 
+2. Add AppEngage to your project: In the Assets menu select Import Package and select the AppEngageUnityPlugin. 
 
-	Note: Make sure the nGage project has a Target Android Version of 3.2 or higher. Minimum Android version can be as low as 2.1.
-
-
-3. In your apps Manifest file add the lines inside the <application> tag:
+3. In your Plugins/Android folder use the given AndroidManifest file or add the below lines to your existing AndroidManifest inside the <application> tag:
 ```Java
  <application …>
 	…
@@ -26,17 +24,30 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 			</intent-filter>
 	</service>
 
-      <activity android:screenOrientation="sensorLandscape" android:configChanges="keyboardHidden|orientation" android:name="com.tinidream.ngage.nGageActivity"/>
+      <activity android:screenOrientation="sensorLandscape" android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tinidream.ngage.nGageActivity"/>
+		 
+      <activity android:name="com.unity3d.player.UnityPlayerProxyActivity" android:launchMode="singleTask" android:label="@string/app_name"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+     </activity>
+        
+     <activity android:name="com.unity3d.player.UnityPlayerActivity" android:launchMode="singleTask" android:label="@string/app_name" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"/>
+    
+    <activity android:name="com.unity3d.player.UnityPlayerNativeActivity" android:launchMode="singleTask" android:label="@string/app_name" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
+    </activity>
 	…
 </application>
 ``` 
 Also in the Manifest, add attribute ```android:launchMode="singleTask"``` to your apps starting activity tag. 
 For example, you will have something like ```<activity android:name="com.company.appname.startingActivity" … 	android:launchMode="singleTask"/>```
 
-`4. Call the **onCreate** function with your app's Activity and your app's AppEngage API Key. You can find your SDK Key on the our dashboard once you have setup a company account and created an app.
+`4. Call the **onCreate** function when your app starts with your app's AppEngage API Key. You can find your SDK Key on the our dashboard once you have setup a company account and created an app.
 
 ```Java
-nGage.getInstance().onCreate(this, "YOUR_APP_API_KEY");
+AppEngagePlugin.onCreate ("YOUR_APP_API_KEY");
 ```
 
 ##Setting up your device for testing 
@@ -50,7 +61,7 @@ Before you begin, make sure your application is set up correctly on the AppEngag
 	b.	Or you can download the following app https://play.google.com/store/apps/details?id=com.evozi.deviceid
   	
   	WARNING: If you use the wrong ID or don’t enter it correctly in the dashboard, the dialogs won't display correctly.
-3.	Run the sample app, you should be able to see how the appengage dialog and the interstitial look.
+3.	Run the sample app, you should be able to see how the AppEngage dialog looks.
 
 
 ##How to integrate the AppEngage Dialog, Actions and Rewarding 
@@ -86,20 +97,20 @@ You should show the dialog from at least two places in your app:
 
 To show the nGage achievements dialog call:
 ```Java
-nGage.getInstance().showAchievements();
+AppEngagePlugin.showAchievements();
 ```
 
 ####STEP 3 DETAILS: Call the AppEngage onDestroy function.
-When your application exits, call function **onDestroy()**. Our recommended placement is in your app's Activity onDestroy function but anywhere will do as long as it is when the app exits. 
+When your application exits, call function **callnGageOnDestroy()**. Our recommended placement is in your app's Activity onDestroy function but anywhere will do as long as it is when the app exits. 
 ```Java
-nGage.getInstance().onDestroy();
+AppEngagePlugin.callnGageOnDestroy ();
 ```
 
 ####STEP 4 DETAILS: Completing Actions.
 To complete an action add the below line when the action requirements are completed in your app. Pass the action type as the parameter.
 
 ```Java
-nGage.getInstance().completeAction("THE_ACTION");
+AppEngagePlugin.completeAction("THE_ACTION");
 ```
 
 	
@@ -117,31 +128,22 @@ Built in Engagement Actions:
 You can also create custom action types on the campaign editor.
 
 ####STEP 5 DETAILS: Receiving Rewards
-Don't forget to reward your users with their virtual currency. In your apps Activity **onResume** function add the following code.
+Check if AppEngage rewards exist when your app resumes from an interrupt. In Unity's system function OnApplicationPause you can do just that.
 
 ```Java
-//Calls the server to check for rewards when the app resumes. The placement of this code is crucial to keep your users happy!
-nGage.getInstance().getPendingRewards();
+void OnApplicationPause(bool pauseStatus) {
+	//Call AppEngage getPendingRewards when app resumes
+	if (!pauseStatus) { 
+		AppEngagePlugin.getPendingRewards (); 
+	}
+}
 ```
 
-Implement the nGageListener to the class you wish to receive your callback on.
+A callback function nGageRewardEvent in script file AppEngagePluginHandler which will be called if a reward needs to be given to the user.
 ```Java
-public class myClassWhereIwantReward implements nGageListener
-```
-
-Pass that class instance to 'setRewardListener':
-```Java
-nGage.getInstance().setRewardListener(this);
-```
-
-Add the callback function to reward your user:
-```Java
-
-@Override
   public void nGageReward(int reward, String currency_claim_token) {
 	  // Callback from getPendingRewards call
-	  if (reward>0)
-		  Log.w("nGage", "You've received a reward of "+reward+". Your server confirmation token is "+ currency_claim_token);
+	  Debug.Log( "User reward="+reward+" server currency claim token="+currencyClaimToken );
 	  
   }
 ```
@@ -162,53 +164,8 @@ To prevent fraud, you should give currency to the user only server-side, and onl
 
 ##Showing Interstitials
 
-We have incentivized and non-incentivized interstitials. 
+We have incentivized and non-incentivized interstitials. However, they will be available in a future Unity SDK release.
 
-For Non-incentivized call:
-```Java
-nGage.getInstance().showInterstitial();
-```
-
-For Incentivized call:
-```Java
-nGage.getInstance().showIncentedInterstitial();
-```
-
-If you've setup the Receive Rewards section above then you are ready to receive rewards from incentivized interstitial also. 
-
-####(Optional) Interstitial Fill Callback 
-
-You can optionally setup a callback for informational purposes. To do so implement **nGageInterstitialListener** with callback function.
-
-Pass the class instance implementing 'nGageInterstitialListener' to 'setInterstitialListener':
-```Java
-nGage.getInstance().setInterstitialListener(<classInstance>);
-```
-Then create the callback function 'nGageInterstitial':
-
-```Java
-@Override
-void nGageInterstitial(boolean displayed, String errorCode){
-	//param displayed - If true then the ad was shown and errorCode will be null. If false then no inventory was available or some other server error occurred.
-	//param errorCode - errorCode returns a server code prompt for debugging.
-}
-```
-####(Optional) Interstitial Close By Device Back Key
-
-If you would like to set the device back key to close the interstitial you can optionally call: 
-
-```Java
-nGage.getInstance().onBackPressed()
-```
-which will close the interstitial if it's open. It also returns true if the interstitial was open and was closed successfully. If it returns false the interstitial was not showing and you can process the back key normally for your app. 
-
-##(Optional) Proguard 
-If you are using proguard add the following lines to your proguard.cfg file: 
-
-```Java
--dontwarn com.tinidream.**
--keep class com.tinidream.** {*;}
-```
 
 ##Sample App
 
