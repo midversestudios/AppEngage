@@ -18,7 +18,8 @@ public class SampleAppScript: MonoBehaviour
 	public GUIStyle buttonStyle;
 	 
 	public int reward=0;
-	String app_key="Add your AppEngage App Key here";
+	String app_key = "7eae9c2a62c171d4be9e53605d597eb99971e266";//Add your AppEngage App Key here";
+	String getDeviceID="";
 
 	void Start(){
 		DontDestroyOnLoad(this);
@@ -33,6 +34,7 @@ public class SampleAppScript: MonoBehaviour
 		centeredStyle.fontSize = 22;
 
 		AppEngagePlugin.onCreate (app_key); //call once on startup
+		this.getDeviceID = AppEngagePlugin.getDeviceID ();
 		Debug.Log ("unityStart");
 	}
 
@@ -65,11 +67,13 @@ public class SampleAppScript: MonoBehaviour
 		//Quit app with proper AppEngage call
 		yPos += scaleY (120);
 		if (GUI.Button (new Rect (width * .1f, yPos, width * .8f, scaleY (100)), "Quit", buttonStyle)) {
-			AppEngagePlugin.callnGageOnDestroy ();
+			AppEngagePlugin.OnDestroy ();
 			Application.Quit ();
 		}
-
 		yPos += scaleY (120);
+		GUI.Label (new Rect (0, yPos, width, scaleY(100)), "Your Device ID = "+getDeviceID ,centeredStyle);
+
+		yPos += scaleY (100);
 		if (app_key.Contains ("Add your AppEngage")) {
 			GUI.Label (new Rect (0, yPos, width, scaleY(100)), "Add your AppEngage app key to SampleAppScript" ,centeredStyle);
 		}

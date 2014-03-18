@@ -79,11 +79,19 @@ public class AppEngagePlugin {
 		androidPlugin.Call( "showAchievements" );
 	}
 	
-	public static void callnGageOnDestroy()
+	public static void OnDestroy()
 	{
 		if( Application.platform != RuntimePlatform.Android )
 			return;
 
 		androidPlugin.Call( "nGageDestroy" );
+	}
+ 
+	public static string  getDeviceID()
+	{
+		if( Application.platform != RuntimePlatform.Android )
+			return "";
+		
+		return androidPlugin.Call<string>( "getDeviceID" );
 	}
 }

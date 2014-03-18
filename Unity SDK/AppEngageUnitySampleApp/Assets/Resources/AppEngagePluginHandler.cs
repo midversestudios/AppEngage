@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class AppEngagePluginHandler : MonoBehaviour {
-	static bool initialized = false;
+ 
 	SampleAppScript instance;
+
 	void Start () {
 		DontDestroyOnLoad(this);
 		instance=GameObject.Find("Main Camera").GetComponent("SampleAppScript") as SampleAppScript;
