@@ -101,9 +101,9 @@ AppEngagePlugin.showAchievements();
 ```
 
 ####STEP 3 DETAILS: Call the AppEngage onDestroy function.
-When your application exits, call function **callnGageOnDestroy()**. Our recommended placement is in your app's Activity onDestroy function but anywhere will do as long as it is when the app exits. 
+When your application exits, call function **OnDestroy()**. Our recommended placement is in your app's Activity onDestroy function but anywhere will do as long as it is when the app exits. 
 ```Java
-AppEngagePlugin.callnGageOnDestroy ();
+AppEngagePlugin.OnDestroy ();
 ```
 
 ####STEP 4 DETAILS: Completing Actions.
