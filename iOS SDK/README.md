@@ -4,17 +4,20 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 
 ##Starting up the iOS AppEngage SDK
 
-1. Get the the latest SDK and extract the zip. Here you will find:
-
-	libAppEngage.a - AppEngage's static library
-	MVAppEngage.h - AppEngage's public header
-	MVAppEngageResources.bundle = AppEngage's resource bundles 
-	SampleApp - Sample Xcode project integrating the AppEngage SDK 
+Add **libAppEngage.a MVAppEngage.h MVAppEngageResources.bundle** to your Xcode project.
 
 
-2. Add nGage resource to the project: -  Since Android does not allow packing resources directly into a library file you must add the nGage Android project. In eclipse, Import 'nGage' project from the SDK zip file. Go to your apps Project Properties and select Android menu item on left. On the right you will see a 'Library' section. Select the 'Add' button and find the android project 'nGage'. 
 
-	Note: Make sure the nGage project has a Target Android Version of 3.2 or higher. Minimum Android version can be as low as 2.1.
+Link the following frameworks:
++ **AdSupport.framework**  
++ **Security.framework**
+ 
+
+
+In your target's **Build Settings** under the **Other Linker Flags** section, add the following flags:
++ **-ObjC**
++ **-all_load**
+
 
 
 3. In your apps Manifest file add the lines inside the <application> tag:
