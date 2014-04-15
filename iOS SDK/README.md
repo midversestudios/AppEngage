@@ -80,13 +80,13 @@ You can also create custom action types on the campaign editor.
 Publishers are able to verify currency claims by making a call to the following URL:
 	http://engage.pxladdicts.com/engage/verifycurrencyclaimtoken/token/TOKEN_FROM_SDK
 	Parameters:
-	TOKEN_FROM_SDK - token is provided by the client-side SDK on every /engage/getpendingrewards call
+	**TOKEN_FROM_SDK** - token is provided by the client-side SDK on every rewarding of currency
 
-Response:
-	The API call returns JSON in the following format:
-	{"result": {"token_verified": 0 or 1, i.e. is the token valid, "claimed": 0 or 1, i.e. has the token been claimed before, currency_amount":AMOUNT_OF_CURRENCY_AS_AN_INTEGER}}
+```json
+	{"result": {"token_verified": 0 or 1, "claimed": 0 or 1, "currency_amount":0 or more}}
+```
 
-To prevent fraud, you should give currency to the user only server-side, and only when token_verified is 1 and claimed is 0
+To prevent fraud, you should give currency to the user only server-side, and only when **token_verified** is 1 and claimed is 0
 
 ##Sample App
 
