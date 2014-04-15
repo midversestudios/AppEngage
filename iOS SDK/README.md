@@ -16,10 +16,17 @@ Link the following frameworks:
 In your target's **Build Settings** under the **Other Linker Flags** section, add the following flags:
 + **-ObjC**
 + **-all_load**
+ 
+If you are publishing the **AppEngage Dialog**, complete the following steps:
 
-##Let's start it up!
+1.	Setup **App** and **Engagement Actions**.  Make sure that your app and engagement actions are set up in the dashboard correctly at engage.pxladdicts.com.
+
+##Setting up your device for testing 
+
+Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s **IDFA** to the list of test devices on the AppEngage dashboard. 
 
 
+##Let's start up the AppEngage SDK!
 
 
 In your **AppDelgate**'s **application:didFinishLaunchingWithOptions:** method:
@@ -41,49 +48,19 @@ Set up a block to be notified when your user earns currency.
     }];
 ```
 
-##Setting up your device for testing 
-
-Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s **IDFA** to the list of test devices on the AppEngage dashboard. 
-
-
-##How to integrate the AppEngage Dialog
-
-If you are integrating/showing the AppEngage dialog, complete the following steps:
-
-1.	Setup App and Campaign in Dashboard.
-
-	a.	Make sure that your app and campaign actions are set up in the dashboard correctly at engage.pxladdicts.com.
-	
-2.	Show the AppEngage dialog in your app.
-
-3.	Mark your engagement actions complete.
-
-
-More details on these steps follow:
-
-####STEP 1 DETAILS: Set up App and Campaign on Dashbaord.
-Your app’s publishing status should be set to live, and you should have created an engagement campaign.  The engagement campaign should have at least one silver action (For example: Play 1 Hand)
-
-####STEP 2 DETAILS: Show the AppEngage dialog in your app.
-You should show the dialog from at least two places in your app:
-
-     i.  When the user starts the app. We recommend after your own promotional windows.
-     
-     ii. From a button in your app’s store, or wherever you have free virtual currency available.
-
+##Showing the AppEngage Dialog
 
 To show the AppEngage dialog call:
 ```objective-c
 [MVAppEngage showEngagementDialog];
 ```
 
-####STEP 3 DETAILS: Completing Actions.
+##Completing Engagement Actions
 To complete an action add the below line when the action requirements are completed in your app. Pass the action type as the parameter.
 
 ```objective-c
 [MVAppEngage userPerformedEngagementAction:@"THE_ACTION"];
 ```
-
 	
 Built in Engagement Actions:
 
@@ -110,10 +87,6 @@ Response:
 	{"result": {"token_verified": 0 or 1, i.e. is the token valid, "claimed": 0 or 1, i.e. has the token been claimed before, currency_amount":AMOUNT_OF_CURRENCY_AS_AN_INTEGER}}
 
 To prevent fraud, you should give currency to the user only server-side, and only when token_verified is 1 and claimed is 0
-
-
-
-
 
 ##Sample App
 
