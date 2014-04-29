@@ -1,6 +1,8 @@
 ##Prerequisites
 Clone this repo or [download here](https://github.com/midversestudios/AppEngage/archive/master.zip)
 
+**ATTENTION**: Do to Apple's recent moves to control the use of **IDFA**, we have dropped **< iOS 6** support. 
+
 Add the following files to your Xcode project:
 + **libAppEngage.a** 
 + **MVAppEngage.h**
