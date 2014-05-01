@@ -1,3 +1,5 @@
+##AppEngage for iOS is in BETA
+
 ##Prerequisites
 Clone this repo or [download here](https://github.com/midversestudios/AppEngage/archive/master.zip)
 
