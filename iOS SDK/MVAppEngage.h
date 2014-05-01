@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define KMVAppEngageSDKVersion @"1.00"
-
 //Engagement Action Options
 #define KMVEngagementActionPlay @"play"
 #define KMVEngagementActionLevelUp @"levelUp"

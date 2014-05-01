@@ -24,7 +24,7 @@
     [self.window makeKeyAndVisible];
     
     
-    [MVAppEngage applicationDidLaunchWithAppKey:@"8b02a018f926c46bf27971a5fdab4b3ca9fda22a"];
+    [MVAppEngage applicationDidLaunchWithAppKey:@"THIS_IS_MY_APPS_API_KEY"];
     [MVAppEngage setPublisherUserID:@"THIS_IS_MY_APPS_UNIQUE_USER_ID"];
     
     //Use Blocks for currency rewards
