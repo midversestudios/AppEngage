@@ -13,18 +13,16 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 2. Add nGage resource to the project: -  Since Android does not allow packing resources directly into a library file you must add the nGage Android project. In eclipse, Import 'nGage' project from the SDK zip file. Go to your apps Project Properties and select Android menu item on left. On the right you will see a 'Library' section. Select the 'Add' button and find the android project 'nGage'. 
 
 	Note: Make sure the nGage project has a Target Android Version of 3.2 or higher. Minimum Android version can be as low as 2.1.
+	
+3. Add the Google Play Services Library Project (GPSLP): GPSLP is a library project required for retrieving the new Advertising ID required by Google. Instructions for adding (GPSLP) can be found here http://developer.android.com/google/play-services/setup.html
 
 
-3. In your apps Manifest file add the lines inside the <application> tag:
+4. In your apps Manifest file add the lines inside the <application> tag:
 ```Java
  <application …>
 	…
-
-	 <service android:name="org.openudid.OpenUDID_service">
-			 <intent-filter>
-				<action android:name="org.openudid.GETUDID"/>
-			</intent-filter>
-	</service>
+       <meta-data android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
       <activity android:screenOrientation="sensorLandscape" android:configChanges="keyboardHidden|orientation" android:name="com.tinidream.ngage.nGageActivity"/>
 	…
@@ -33,7 +31,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 Also in the Manifest, add attribute ```android:launchMode="singleTask"``` to your apps starting activity tag. 
 For example, you will have something like ```<activity android:name="com.company.appname.startingActivity" … 	android:launchMode="singleTask"/>```
 
-`4. Call the **onCreate** function with your app's Activity and your app's AppEngage API Key. You can find your SDK Key on the our dashboard once you have setup a company account and created an app.
+`5. Call the **onCreate** function with your app's Activity and your app's AppEngage API Key. You can find your SDK Key on the our dashboard once you have setup a company account and created an app.
 
 ```Java
 nGage.getInstance().onCreate(this, "YOUR_APP_API_KEY");
