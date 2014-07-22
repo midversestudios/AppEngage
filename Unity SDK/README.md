@@ -18,11 +18,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
  <application …>
 	…
 
-	 <service android:name="org.openudid.OpenUDID_service">
-			 <intent-filter>
-				<action android:name="org.openudid.GETUDID"/>
-			</intent-filter>
-	</service>
+	   <meta-data  android:name="com.google.android.gms.version"  android:value="@integer/google_play_services_version" />
 
       <activity android:screenOrientation="sensorLandscape" android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tinidream.ngage.nGageActivity"/>
 		 
