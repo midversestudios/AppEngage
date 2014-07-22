@@ -14,7 +14,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 
 	Note: Make sure the nGage project has a Target Android Version of 3.2 or higher. Minimum Android version can be as low as 2.1.
 	
-3. Add the Google Play Services Library Project (GPSLP): GPSLP is also a library project required for retrieving the new Advertising ID required by Google. Instructions for adding (GPSLP) can be found here http://developer.android.com/google/play-services/setup.html
+3. Add the Google Play Services Library Project (GPSLP): GPSLP is a library project required for retrieving the new Advertising ID required by Google. Instructions for adding (GPSLP) can be found here http://developer.android.com/google/play-services/setup.html
 
 
 4. In your apps Manifest file add the lines inside the <application> tag:
