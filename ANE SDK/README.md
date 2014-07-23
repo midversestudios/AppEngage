@@ -3,7 +3,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 
 ##Starting up the ANE nGage SDK
 
-1. Add nGageANE to the projects Native Extensions (remember to check the box for nGageANE for the platform(s) on which you are developing)
+1. Add nGageANE_v114.ane to the projects Native Extensions. Remember to check the box for nGageANE for the platform(s) on which you are developing. (Note: if you are already using the Google Play Services Library with your app use nGageANE_v114_no_GplayLib.ane instead)
 
 
 2. In your apps Manifest file add the lines inside the <application> tag:
@@ -26,6 +26,11 @@ For example, you will have something like ```<activity android:name="com.company
 
 ```Java
 nGageANE.getInstance().onCreate(this, "YOUR_APP_API_KEY");
+```
+
+`4. If you're using nGageANE_v114_no_GplayLib.ane be sure to pass the Google Advertising ID to AppEngage before the **onCreate** call in step 3.
+```Java
+nGageANE.getInstance().setPublisherUserID("GOOGLE_ADVERTISING_ID");
 ```
 
 ##Setting up your device for testing 
