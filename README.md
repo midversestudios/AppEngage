@@ -1,4 +1,4 @@
-AppEngage SDK Version 1.1.2
+AppEngage SDK Version 1.1.4
 ===========================
 
 ### Supported Platforms & Documentation
