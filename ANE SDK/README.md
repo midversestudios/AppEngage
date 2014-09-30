@@ -3,7 +3,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
 
 ##Starting up the ANE nGage SDK
 
-1. Add nGageANE to the projects Native Extensions (remember to check the box for nGageANE for the platform(s) on which you are developing)
+1. Add nGageANE_v114.ane to the projects Native Extensions. Remember to check the box for nGageANE for the platform(s) on which you are developing. (Note: if you are already using the Google Play Services Library with your app use nGageANE_v114_no_GplayLib.ane instead)
 
 
 2. In your apps Manifest file add the lines inside the <application> tag:
@@ -28,13 +28,18 @@ For example, you will have something like ```<activity android:name="com.company
 nGageANE.getInstance().onCreate(this, "YOUR_APP_API_KEY");
 ```
 
+`4. If you're using nGageANE_v114_no_GplayLib.ane be sure to pass the Google Advertising ID to AppEngage before the **onCreate** call in step 3.
+```Java
+nGageANE.getInstance().setPublisherUserID("GOOGLE_ADVERTISING_ID");
+```
+
 ##Setting up your device for testing 
 
-Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s Android ID to the list of test devices on the AppEngage dashboard. 
+Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s Advertising ID to the list of test devices on the AppEngage dashboard. 
 
-2.	To get your Android ID:
+2.	To get your Advertising ID:
 
-	a.	Run the AppEngage Android SDK sample app which displays the Android ID. 
+	a.	Run the AppEngage Android SDK sample app which displays the Advertising ID. 
 	
 	b.	Or you can download the following app https://play.google.com/store/apps/details?id=com.evozi.deviceid
   	

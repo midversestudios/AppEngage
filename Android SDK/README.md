@@ -39,11 +39,11 @@ nGage.getInstance().onCreate(this, "YOUR_APP_API_KEY");
 
 ##Setting up your device for testing 
 
-Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s Android ID to the list of test devices on the AppEngage dashboard. 
+Before you begin, make sure your application is set up correctly on the AppEngage dashboard at engage.pxladdicts.com. Add your test device’s Advertising ID to the list of test devices on the AppEngage dashboard. 
 
-2.	To get your Android ID:
+2.	To get your Advertising ID:
 
-	a.	Run the sample app which displays the Android ID. 
+	a.	Run the sample app which displays the Advertising ID. 
 	
 	b.	Or you can download the following app https://play.google.com/store/apps/details?id=com.evozi.deviceid
   	
