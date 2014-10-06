@@ -32,7 +32,7 @@ Clone this repo or [download here](https://github.com/midversestudios/AppEngage/
      <activity android:name="com.unity3d.player.UnityPlayerActivity" android:launchMode="singleTask" android:label="@string/app_name" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"/>
     
     <activity android:name="com.unity3d.player.UnityPlayerNativeActivity" android:launchMode="singleTask" android:label="@string/app_name" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
-      <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
+      <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
     </activity>
 	…
 </application>
