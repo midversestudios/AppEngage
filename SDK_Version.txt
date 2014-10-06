@@ -1,1 +1,1 @@
-AppEngage SDK Version 1.1.2
+AppEngage SDK Version 1.1.5
