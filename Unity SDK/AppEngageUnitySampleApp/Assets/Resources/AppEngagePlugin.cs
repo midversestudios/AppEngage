@@ -54,20 +54,30 @@ public class AppEngagePlugin {
 	{
 		//currently not functional in unity
 
-//		if( Application.platform != RuntimePlatform.Android )
-//			return;
-//
-//		androidPlugin.Call( "showIncentedInterstitial" );
+		if( Application.platform != RuntimePlatform.Android )
+			return;
+
+		androidPlugin.Call( "showIncentedInterstitial" );
 	}
 	
 	public static void showInterstitial(  )
 	{
 		//currently not functional in unity
 
-//		if( Application.platform != RuntimePlatform.Android )
-//			return;
-//
-//		androidPlugin.Call( "showInterstitial" );
+		if( Application.platform != RuntimePlatform.Android )
+			return;
+
+		androidPlugin.Call( "showInterstitial" );
+	}
+
+	public static void showInterstitial(string custom_text  )
+	{
+		//currently not functional in unity
+		
+		if( Application.platform != RuntimePlatform.Android )
+			return;
+		
+		androidPlugin.Call( "showInterstitial",custom_text );
 	}
 	
 	
@@ -80,7 +90,7 @@ public class AppEngagePlugin {
 	}
 	
 	public static void OnDestroy()
-	{
+	{//Depreciated. No longer needed.
 		if( Application.platform != RuntimePlatform.Android )
 			return;
 

@@ -45,12 +45,12 @@ public class AppEngagePluginManager:MonoBehaviour {
 		
 		
 		
-//		  IDictionary search = (IDictionary) Json.Deserialize(adResp);
-//		bool displayed=(bool)search["displayed"];
-//		string errorCode=search["errorCode"].ToString();
-//		Debug.LogError("displayed ="+displayed);
-//		Debug.LogError("errorCode ="+errorCode);
-//		
-//		nGageInterstitialEvent(displayed,errorCode);
+		  IDictionary search = (IDictionary) Json.Deserialize(adResp);
+		bool displayed=(bool)search["displayed"];
+		string errorCode=search["errorCode"].ToString();
+		Debug.LogError("displayed ="+displayed);
+		Debug.LogError("errorCode ="+errorCode);
+		
+		nGageInterstitialEvent(displayed,errorCode);
 	}
 }

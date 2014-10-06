@@ -38,7 +38,7 @@ public class AppEngagePluginHandler : MonoBehaviour {
 	
 	void nGageInterstitialEvent( bool displayed, string errorCode )
 	{
-		//Debug.LogError( "displayed="+displayed+" errorCode="+errorCode );
+		Debug.LogError( "displayed="+displayed+" errorCode="+errorCode );
 	}
 	
 	
