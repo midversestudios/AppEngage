@@ -164,7 +164,7 @@ We have incentivized and non-incentivized interstitials.
 
 For Non-incentivized call:
 ```Java
-nGage.getInstance().showInterstitial();
+nGage.getInstance().showInterstitial("Custom Header Text");
 ```
 
 For Incentivized call:
