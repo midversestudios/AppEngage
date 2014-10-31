@@ -60,6 +60,25 @@ Before you begin, make sure your application is set up correctly on the AppEngag
 3.	Run the sample app, you should be able to see how the AppEngage dialog looks.
 
 
+
+##Showing Interstitials
+
+We have incentivized and non-incentivized interstitials. 
+
+For Non-incentivized call:
+```Java
+nAppEngagePlugin.showInterstitial("Custom Header Text");
+```
+
+For Incentivized call:
+```Java
+AppEngagePlugin.showIncentedInterstitial();
+```
+
+Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
+
+
+
 ##How to integrate the AppEngage Dialog, Actions and Rewarding 
 
 If you are integrating/showing the AppEngage dialog, complete the following steps:
@@ -155,12 +174,6 @@ Response:
 
 To prevent fraud, you should give currency to the user only server-side, and only when token_verified is 1 and claimed is 0
 
-
-
-
-##Showing Interstitials
-
-We have incentivized and non-incentivized interstitials. However, they will be available in a future Unity SDK release.
 
 
 ##Sample App
