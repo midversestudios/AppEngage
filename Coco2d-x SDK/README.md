@@ -80,7 +80,7 @@ We have incentivized and non-incentivized interstitials.
 
 For Non-incentivized call:
 ```Java
-nGageX::showInterstitial()
+nGageX::showInterstitial("Custom Header Text");
 ```
 
 For Incentivized call:
