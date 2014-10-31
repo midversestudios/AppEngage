@@ -68,6 +68,9 @@ We have incentivized and non-incentivized interstitials.
 For Non-incentivized call:
 ```Java
 nAppEngagePlugin.showInterstitial("Custom Header Text");
+
+//"<Custom Header Text> is the happy moment contextual text shown at top of the interstitial window. 
+//For ex, "You claimed your daily bonus!" Or "Nice! You got a big win!" Or "Thanks for playing!"
 ```
 
 For Incentivized call:
