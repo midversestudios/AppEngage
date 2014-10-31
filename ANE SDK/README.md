@@ -47,6 +47,49 @@ Before you begin, make sure your application is set up correctly on the AppEngag
 3.	Run the sample app, you should be able to see how the appengage dialog and the interstitial look.
 
 
+
+
+##Showing Interstitials
+
+We have incentivized and non-incentivized interstitials. 
+
+For Non-incentivized call:
+```Java
+nGageANE.getInstance().showInterstitial();
+```
+
+For Incentivized call:
+```Java
+nGageANE.getInstance().showIncentedInterstitial();
+```
+
+Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
+
+####(Optional) Interstitial Fill Callback 
+You can optionally setup a callback for informational purposes. To do so implement **nGageInterstitialListener** with callback function.
+```Java
+protected function intersticialHandler(event:nGageInterstitialEvent):void
+{
+    trace("Intersticial received: " + event.ad_displayed +" "+ event.ad_error_code);	
+}
+```
+
+Add an event listener in the class which you want to get intersticial information.  
+
+```Java
+nGageANE.getInstance().addEventListener(nGageInterstitialEvent.INTERSTITIAL, intersticialHandler);
+```
+
+####(Optional) Interstitial Close By Device Back Key
+
+If you would like to set the device back key to close the interstitial you can optionally call: 
+
+```Java
+nGageANE.getInstance().onBackPressed()
+```
+which will close the interstitial if it's open. It also returns true if the interstitial was open and was closed successfully. If it returns false the interstitial was not showing and you can process the back key normally for your app. 
+
+
 ##How to integrate the AppEngage Dialog, Actions and Rewarding 
 
 If you are integrating/showing the AppEngage dialog, complete the following steps:
@@ -144,46 +187,6 @@ To prevent fraud, you should give currency to the user only server-side, and onl
 
 
 
-
-##Showing Interstitials
-
-We have incentivized and non-incentivized interstitials. 
-
-For Non-incentivized call:
-```Java
-nGageANE.getInstance().showInterstitial();
-```
-
-For Incentivized call:
-```Java
-nGageANE.getInstance().showIncentedInterstitial();
-```
-
-If you've setup the Receive Rewards section above then you are ready to receive rewards from incentivized interstitial also. 
-
-####(Optional) Interstitial Fill Callback 
-You can optionally setup a callback for informational purposes. To do so implement **nGageInterstitialListener** with callback function.
-```Java
-protected function intersticialHandler(event:nGageInterstitialEvent):void
-{
-    trace("Intersticial received: " + event.ad_displayed +" "+ event.ad_error_code);	
-}
-```
-
-Add an event listener in the class which you want to get intersticial information.  
-
-```Java
-nGageANE.getInstance().addEventListener(nGageInterstitialEvent.INTERSTITIAL, intersticialHandler);
-```
-
-####(Optional) Interstitial Close By Device Back Key
-
-If you would like to set the device back key to close the interstitial you can optionally call: 
-
-```Java
-nGageANE.getInstance().onBackPressed()
-```
-which will close the interstitial if it's open. It also returns true if the interstitial was open and was closed successfully. If it returns false the interstitial was not showing and you can process the back key normally for your app. 
 
 ##(Optional) Proguard 
 If you are using proguard add the following lines to your proguard.cfg file: 
