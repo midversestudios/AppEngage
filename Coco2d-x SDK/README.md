@@ -73,6 +73,57 @@ Before you begin, make sure your application is set up correctly on the AppEngag
 3.	Run the sample app, you should be able to see how the appengage dialog and the interstitial look.
 
 
+
+##Showing Interstitials
+
+We have incentivized and non-incentivized interstitials. 
+
+For Non-incentivized call:
+```Java
+nGageX::showInterstitial()
+```
+
+For Incentivized call:
+```Java
+nGageX::showIncentedInterstitial();
+```
+
+Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
+
+####(Optional) Interstitial Fill Callback 
+
+You can optionally setup a callback for informational purposes. To do so implement **nGageXInterstitialDelegate** with callback function.
+
+Create an **nGageXInterstitialDelegate** instance in the class you wish to receive intersticial callbacks.
+```Java
+nGageXInterstitialDelegate *callbackInterstitial;
+```
+
+Pass that class instance to **setInterstitialDelegate**:
+```Java
+ callbackInterstitial=new nGageXInterstitialDelegate();
+ nGageX::setInterstitialDelegate(callbackInterstitial);
+```
+
+Add the callback function:
+```Java
+ void nGageXInterstitialDelegate::onReceiveInterstitialInfo(bool displayed,const char* errorCode){
+ 	CCLog("Did the interstitial display? %d", displayed);
+	CCLog("Was there an an error code? %s", errorCode);
+ }
+```
+
+####(Optional) Interstitial Close By Device Back Key
+
+If you would like to set the device back key to close the interstitial you can optionally call:
+
+```Java
+ nGageX::onBackPressed();
+```
+which will close the interstitial if it's open. It also returns true if the interstitial was open and was closed successfully. If it returns false the interstitial was not showing and you can process the back key normally for your app.  
+
+
+
 ##How to integrate the AppEngage Dialog, Actions and Rewarding 
 
 If you are integrating/showing the AppEngage dialog, complete the following steps:
@@ -177,55 +228,6 @@ Response:
 To prevent fraud, you should give currency to the user only server-side, and only when token_verified is 1 and claimed is 0
 
 
-
-
-##Showing Interstitials
-
-We have incentivized and non-incentivized interstitials. 
-
-For Non-incentivized call:
-```Java
-nGageX::showInterstitial()
-```
-
-For Incentivized call:
-```Java
-nGageX::showIncentedInterstitial();
-```
-
-If you've setup the Receive Rewards section above then you are ready to receive rewards from incentivized interstitial also. 
-
-####(Optional) Interstitial Fill Callback 
-
-You can optionally setup a callback for informational purposes. To do so implement **nGageXInterstitialDelegate** with callback function.
-
-Create an **nGageXInterstitialDelegate** instance in the class you wish to receive intersticial callbacks.
-```Java
-nGageXInterstitialDelegate *callbackInterstitial;
-```
-
-Pass that class instance to **setInterstitialDelegate**:
-```Java
- callbackInterstitial=new nGageXInterstitialDelegate();
- nGageX::setInterstitialDelegate(callbackInterstitial);
-```
-
-Add the callback function:
-```Java
- void nGageXInterstitialDelegate::onReceiveInterstitialInfo(bool displayed,const char* errorCode){
- 	CCLog("Did the interstitial display? %d", displayed);
-	CCLog("Was there an an error code? %s", errorCode);
- }
-```
-
-####(Optional) Interstitial Close By Device Back Key
-
-If you would like to set the device back key to close the interstitial you can optionally call:
-
-```Java
- nGageX::onBackPressed();
-```
-which will close the interstitial if it's open. It also returns true if the interstitial was open and was closed successfully. If it returns false the interstitial was not showing and you can process the back key normally for your app.  
 
 ##Proguard (optional)
 If you are using proguard add the following lines to your proguard.cfg file: 
