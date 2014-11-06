@@ -88,10 +88,12 @@ nGageX::showInterstitial("Custom Header Text");
 
 For Incentivized call:
 ```Java
-nGageX::showIncentedInterstitial();
+nGageX::showIncentedInterstitial("Custom Header Text");
+//"<Custom Header Text> is the happy moment contextual text shown at top of the interstitial window. 
+//For ex, "You claimed your daily bonus!" Or "Nice! You got a big win!" Or "Thanks for playing!"
 ```
 
-Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
+Note:Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
 
 ####(Optional) Interstitial Fill Callback 
 
