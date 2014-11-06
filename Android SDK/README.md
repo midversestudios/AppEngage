@@ -66,10 +66,13 @@ nGage.getInstance().showInterstitial("Custom Header Text");
 
 For Incentivized call:
 ```Java
-nGage.getInstance().showIncentedInterstitial();
+nGage.getInstance().showIncentedInterstitial("Custom Header Text");
+//"<Custom Header Text> is the happy moment contextual text shown at top of the interstitial window. 
+//For ex, "You claimed your daily bonus!" Or "Nice! You got a big win!" Or "Thanks for playing!"
+
 ```
 
-Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
+NOTE: Setup the Receive Rewards section below to receive rewards from incentivized interstitial. 
 
 ####(Optional) Interstitial Fill Callback 
 
