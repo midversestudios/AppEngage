@@ -37,6 +37,7 @@ public:
   static void showInterstitial();
   static void showIncentedInterstitial();
   static void showInterstitial(const char* custom_text);
+  static void showIncentedInterstitial(const char* custom_text);
   static void setInterstitialDelegate(nGageXInterstitialDelegate *interstitialDelegate);
   static void onReceiveInterstitialInfo(bool displayed,const char* errorCode); //callback function
 

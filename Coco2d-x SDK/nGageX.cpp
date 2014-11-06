@@ -120,6 +120,17 @@ void nGageX::showIncentedInterstitial(){
 	 }
 }
 
+void nGageX::showIncentedInterstitial(const char* custom_text){
+    JniMethodInfo methodInfo;
+    if (JniHelper::getStaticMethodInfo(methodInfo, "com/tinidream/ngagecoco/nGageHelper", "showIncentedInterstitial", "(Ljava/lang/String;)V")) {
+        
+        jstring jcustom_text = methodInfo.env->NewStringUTF(custom_text);
+        methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, jcustom_text);
+        methodInfo.env->DeleteLocalRef(jcustom_text);
+        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+    }
+}
+
 void nGageX::showInterstitial(const char* custom_text){
 	JniMethodInfo methodInfo;
 	if (JniHelper::getStaticMethodInfo(methodInfo, "com/tinidream/ngagecoco/nGageHelper", "showInterstitial", "(Ljava/lang/String;)V")) {

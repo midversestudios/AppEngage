@@ -97,6 +97,11 @@ public class nGageHelper implements nGageListener,nGageInterstitialListener{
 		}
 	}
 	
+    public static void showIncentedInterstitial(String custom_text){
+        if(ngage!=null){
+            ngage.showIncentedInterstitial(custom_text);
+        }
+    }
 	
 	public static void showIncentedInterstitial(){
 		if(ngage!=null){
